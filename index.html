@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MarketLane - Buy and Sell Products</title>
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#shop" aria-label="MarketLane home">
+        <span class="brand-mark">M</span>
+        <span>MarketLane</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#shop">Shop</a>
+        <a href="#sell">Sell</a>
+        <a href="#orders">Orders</a>
+      </nav>
+      <button class="cart-toggle" type="button" data-cart-open aria-label="Open cart">
+        <span>Cart</span>
+        <strong data-cart-count>0</strong>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <p class="eyebrow">Trusted neighborhood marketplace</p>
+          <h1 id="hero-title">Buy better. Sell faster.</h1>
+          <p>
+            Discover quality products from local sellers, list your own items in
+            minutes, and manage your cart in one clean marketplace.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-action" href="#shop">Browse products</a>
+            <a class="secondary-action" href="#sell">List an item</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="toolbar" aria-label="Product tools">
+        <label class="search-field">
+          <span>Search</span>
+          <input id="searchInput" type="search" placeholder="Search products, sellers, or locations" />
+        </label>
+        <label class="select-field">
+          <span>Category</span>
+          <select id="categoryFilter">
+            <option value="All">All categories</option>
+          </select>
+        </label>
+        <label class="select-field">
+          <span>Sort</span>
+          <select id="sortFilter">
+            <option value="featured">Featured</option>
+            <option value="price-low">Price: low to high</option>
+            <option value="price-high">Price: high to low</option>
+            <option value="newest">Newest listings</option>
+          </select>
+        </label>
+      </section>
+
+      <section id="shop" class="section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Shop</p>
+            <h2>Featured Products</h2>
+          </div>
+          <p data-result-count></p>
+        </div>
+        <div class="product-grid" id="productGrid" aria-live="polite"></div>
+      </section>
+
+      <section id="sell" class="sell-panel" aria-labelledby="sell-title">
+        <div>
+          <p class="eyebrow">Sell</p>
+          <h2 id="sell-title">Create a listing</h2>
+          <p>
+            Add a product with a fair price, useful details, and a clear pickup or
+            shipping location. New listings appear instantly in the shop.
+          </p>
+        </div>
+        <form id="listingForm" class="listing-form">
+          <label>
+            Product name
+            <input name="name" type="text" placeholder="Vintage desk lamp" required />
+          </label>
+          <label>
+            Price
+            <input name="price" type="number" min="1" step="1" placeholder="45" required />
+          </label>
+          <label>
+            Category
+            <select name="category" required>
+              <option value="Home">Home</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Fashion">Fashion</option>
+              <option value="Outdoors">Outdoors</option>
+              <option value="Books">Books</option>
+            </select>
+          </label>
+          <label>
+            Location
+            <input name="location" type="text" placeholder="Austin, TX" required />
+          </label>
+          <label class="wide">
+            Description
+            <textarea name="description" rows="4" placeholder="Condition, size, included accessories, and pickup details" required></textarea>
+          </label>
+          <button class="primary-action wide" type="submit">Publish listing</button>
+        </form>
+      </section>
+
+      <section id="orders" class="section orders">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Orders</p>
+            <h2>Recent Activity</h2>
+          </div>
+        </div>
+        <div class="activity-list">
+          <article>
+            <strong>Verified checkout</strong>
+            <span>Instant cart totals and seller pickup notes.</span>
+          </article>
+          <article>
+            <strong>Seller tools</strong>
+            <span>Listings are saved in this browser for quick demos.</span>
+          </article>
+          <article>
+            <strong>Buyer confidence</strong>
+            <span>Every listing shows seller, category, location, and condition.</span>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <aside class="cart-drawer" data-cart-drawer aria-hidden="true">
+      <div class="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+        <div class="cart-header">
+          <h2 id="cartTitle">Your Cart</h2>
+          <button class="icon-button" type="button" data-cart-close aria-label="Close cart">x</button>
+        </div>
+        <div class="cart-items" data-cart-items></div>
+        <div class="cart-summary">
+          <div>
+            <span>Subtotal</span>
+            <strong data-cart-total>$0</strong>
+          </div>
+          <button class="primary-action" type="button" data-checkout>Checkout</button>
+          <p data-checkout-message></p>
+        </div>
+      </div>
+    </aside>
+
+    <script src="app.js"></script>
+  </body>
+</html>
